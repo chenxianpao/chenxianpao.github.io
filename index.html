@@ -85,5 +85,103 @@
     }
     setInterval(function() {currentTime()}, 1000);
 </script>
+<script src="lib/bmob.js"></script>
+<script type="text/javascript">
+
+    //Bmob.initialize("Application ID", "REST API Key");
+    Bmob.initialize("a658a746e686eac3e7ceeff60e743908", "73d1a7fbb21be960c5a97df2701cb98d");
+
+    var TestObject = Bmob.Object.extend("TestObject");
+    var testObject = new TestObject();
+    testObject.save({foo: "bar"}, {
+        success: function(object) {
+            $(".success").show();
+        },
+        error: function(model, error) {
+            $(".error").show();
+        }
+    });
+
+//    var roleACL = new Bmob.ACL();
+//    roleACL.setPublicReadAccess(true);
+//    var role = new Bmob.Role("test", roleACL);
+//    role.save();
+
+    // By specifying no write privileges for the ACL, we can ensure the role cannot be altered.
+    var roleACL = new Bmob.ACL();
+    roleACL.setPublicReadAccess(true);
+    var role = new Bmob.Role("Administrator", roleACL);
+    role.save();
+
+//    var role = new Bmob.Role(roleName, roleACL);
+//    for (var i = 0; i < usersToAddToRole.length; i++) {
+//        role.getUsers().add(usersToAddToRole[i]);
+//    }
+//    for (var i = 0; i < rolesToAddToRole.length; i++) {
+//        role.getRoles().add(rolesToAddToRole[i]);
+//    }
+//    role.save();
+    /*
+     //获取一行数据
+     var GameScore = Bmob.Object.extend("GameScore");
+     var query = new Bmob.Query(GameScore);
+     query.get("4edc3f6ee9", {
+     success: function(object) {
+     // The object was retrieved successfully.
+     alert(object.get("score"));
+     },
+     error: function(object, error) {
+     alert("query object fail");
+     }
+     });
+     */
+
+    /*
+     //修改一行数据
+     var GameScore = Bmob.Object.extend("GameScore");
+     var query = new Bmob.Query(GameScore);
+     query.get("4edc3f6ee9", {
+     success: function(object) {
+     // The object was retrieved successfully.
+     object.set("score", 1338);
+     object.save(null, {
+     success: function(objectUpdate) {
+     alert("create object success, object score:"+objectUpdate.get("score"));
+     },
+     error: function(model, error) {
+     alert("create object fail");
+     }
+     });
+     },
+     error: function(object, error) {
+     alert("query object fail");
+     }
+     });
+     */
+
+    /*
+     //删除一行数据
+     var GameScore = Bmob.Object.extend("GameScore");
+     var query = new Bmob.Query(GameScore);
+     query.get("4edc3f6ee9", {
+     success: function(object) {
+     // The object was retrieved successfully.
+     object.destroy({
+     success: function(deleteObject) {
+     alert("delete success");
+     },
+     error: function(GameScoretest, error) {
+     alert("delete fail");
+     }
+     });
+     },
+     error: function(object, error) {
+     alert("query object fail");
+     }
+     });
+     */
+
+
+</script>
 </body>
 </html>
