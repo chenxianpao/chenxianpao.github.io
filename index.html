@@ -1,89 +1,50 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="DailyReport">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="lib/bootstrap-3.3.7/css/bootstrap.min.css">
 </head>
 <body>
-<div class="panel panel-default">
-    <div class="panel-heading">
-        日报汇总
-        <a href="#" style="position: absolute;right: 1%">登录</a>
-    </div>
-    <div class="panel-body">
-        <div>
-            <button class="btn btn-default" style="left: 1%">
-                填写日报
-            </button>
-            <p id="currentTime" style="position: absolute;display: inline;margin-top:10px;right: 2%;"></p>
-        </div>
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <th>责任人</th>
-                <th>任务类型</th>
-                <th>任务内容</th>
-                <th>完成度</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td rowspan="3">Tanmay</td>
-                <td>Tanmay</td>
-                <td>Bangalore</td>
-                <td>1</td>
-            </tr>
-            <tr>
-                <td>Sachin</td>
-                <td>Mumbai</td>
-                <td>1</td>
-            </tr>
-            <tr>
-                <td>Uma</td>
-                <td>Pune</td>
-                <td>1</td>
-            </tr>
-
-            <tr>
-                <td rowspan="3">CXP</td>
-                <td>Tanmay</td>
-                <td>Bangalore</td>
-                <td>2</td>
-            </tr>
-            <tr>
-                <td>Sachin</td>
-                <td>Mumbai</td>
-                <td>2</td>
-            </tr>
-            <tr>
-                <td>Uma</td>
-                <td>Pune</td>
-                <td>2</td>
-            </tr>
-            </tbody>
-        </table>
-        <div style="position: absolute;right: 5%">
-            <span>选择日期</span>
-            <input type="date" value="2015-09-24"/>
-            <button class="btn btn-default">前一天</button>
-            <button class="btn btn-default">后一天</button>
-        </div>
-    </div>
-
-    <div class="panel-footer" style="margin-top: 50px">
-        Hello
-    </div>
-</div>
+<div ui-view autoscroll="true" autoscroll-body-top></div>
 <script src="lib/angular-1.6.3/angular.js"></script>
+<script src="lib/angular-1.6.3/angular-ui-router.js"></script>
+
+<!--<script src="lib/angular-1.6.3/angular-route.js"></script>-->
+<!--<script src="lib/angular-1.6.3/"></script>-->
+
+<script src="app/app.js"></script>
+<script src="app/dashboard/dashboard.module.js"></script>
+<!--<script>-->
+    <!--angular.module('DailyReport', [-->
+        <!--'DailyReport.dashboard'-->
+    <!--]);-->
+    <!--angular.module('DailyReport.dashboard', [])-->
+        <!--.config(routeConfig);-->
+
+    <!--/** @ngInject */-->
+    <!--function routeConfig($stateProvider, $urlRouterProvider) {-->
+        <!--$urlRouterProvider.otherwise('/dashboard');-->
+        <!--$stateProvider-->
+            <!--.state('dashboard', {-->
+                <!--url: '/dashboard',-->
+                <!--templateUrl: 'app/pages/dashboard/dashboard.html',-->
+                <!--title: 'Dashboard',-->
+<!--//                sidebarMeta: {-->
+<!--//                    icon: 'ion-android-home',-->
+<!--//                    order: 0,-->
+<!--//                },-->
+            <!--});-->
+    <!--}-->
+<!--</script>-->
 <script>
-    function currentTime(){
-        var a = new Date();
-        var b = a.toLocaleTimeString();
-        var c = a.toLocaleDateString();
-        document.getElementById("currentTime").innerHTML = c+"&nbsp"+b;
-    }
-    setInterval(function() {currentTime()}, 1000);
+//    function currentTime(){
+//        var a = new Date();
+//        var b = a.toLocaleTimeString();
+//        var c = a.toLocaleDateString();
+//        document.getElementById("currentTime").innerHTML = c+"&nbsp"+b;
+//    }
+//    setInterval(function() {currentTime()}, 1000);
 </script>
 <script src="lib/bmob.js"></script>
 <script type="text/javascript">
@@ -91,16 +52,16 @@
     //Bmob.initialize("Application ID", "REST API Key");
     Bmob.initialize("a658a746e686eac3e7ceeff60e743908", "73d1a7fbb21be960c5a97df2701cb98d");
 
-    var TestObject = Bmob.Object.extend("TestObject");
-    var testObject = new TestObject();
-    testObject.save({foo: "bar"}, {
-        success: function(object) {
-            $(".success").show();
-        },
-        error: function(model, error) {
-            $(".error").show();
-        }
-    });
+//    var TestObject = Bmob.Object.extend("TestObject");
+//    var testObject = new TestObject();
+//    testObject.save({foo: "bar"}, {
+//        success: function(object) {
+//            $(".success").show();
+//        },
+//        error: function(model, error) {
+//            $(".error").show();
+//        }
+//    });
 
 //    var roleACL = new Bmob.ACL();
 //    roleACL.setPublicReadAccess(true);
@@ -108,10 +69,10 @@
 //    role.save();
 
     // By specifying no write privileges for the ACL, we can ensure the role cannot be altered.
-    var roleACL = new Bmob.ACL();
-    roleACL.setPublicReadAccess(true);
-    var role = new Bmob.Role("Administrator", roleACL);
-    role.save();
+//    var roleACL = new Bmob.ACL();
+//    roleACL.setPublicReadAccess(true);
+//    var role = new Bmob.Role("Administrator", roleACL);
+//    role.save();
 
 //    var role = new Bmob.Role(roleName, roleACL);
 //    for (var i = 0; i < usersToAddToRole.length; i++) {
@@ -183,5 +144,6 @@
 
 
 </script>
+
 </body>
 </html>
