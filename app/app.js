@@ -5,5 +5,4 @@
 
 angular.module('DailyReport', [
     'ui.router',
-    'DailyReport.dashboard'
-]);
+    'ui.bootstrap']);

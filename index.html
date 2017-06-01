@@ -3,147 +3,105 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="lib/bootstrap-3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
 </head>
-<body>
-<div ui-view autoscroll="true" autoscroll-body-top></div>
-<script src="lib/angular-1.6.3/angular.js"></script>
-<script src="lib/angular-1.6.3/angular-ui-router.js"></script>
+<body ng-controller="dashboardCtrl">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            日报汇总
+            <a href="#" style="position: absolute;right: 1%">登录</a>
+        </div>
+        <div class="panel-body">
+            <div>
+                <button class="btn btn-default" ng-click="writereport()" style="left: 1%">
+                    填写日报
+                </button>
+                <p id="currentTime" style="position: absolute;display: inline;margin-top:10px;right: 2%;"></p>
+            </div>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>责任人</th>
+                    <th>任务类型</th>
+                    <th>任务内容</th>
+                    <th>完成度</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td rowspan="3">Tanmay</td>
+                    <td>Tanmay</td>
+                    <td>Bangalore</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>Sachin</td>
+                    <td>Mumbai</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>Uma</td>
+                    <td>Pune</td>
+                    <td>1</td>
+                </tr>
 
-<!--<script src="lib/angular-1.6.3/angular-route.js"></script>-->
-<!--<script src="lib/angular-1.6.3/"></script>-->
+                <tr>
+                    <td rowspan="3">CXP</td>
+                    <td>Tanmay</td>
+                    <td>Bangalore</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>Sachin</td>
+                    <td>Mumbai</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>Uma</td>
+                    <td>Pune</td>
+                    <td>2</td>
+                </tr>
+                </tbody>
+            </table>
+            <div style="position: absolute;right: 5%">
+                <span>选择日期</span>
+                <input type="date" value="2015-09-24"/>
+                <button class="btn btn-default">前一天</button>
+                <button class="btn btn-default">后一天</button>
+            </div>
+        </div>
 
-<script src="app/app.js"></script>
-<script src="app/dashboard/dashboard.module.js"></script>
-<!--<script>-->
-    <!--angular.module('DailyReport', [-->
-        <!--'DailyReport.dashboard'-->
-    <!--]);-->
-    <!--angular.module('DailyReport.dashboard', [])-->
-        <!--.config(routeConfig);-->
+        <div class="panel-footer" style="margin-top: 50px">
+            Hello
+        </div>
+    </div>
 
-    <!--/** @ngInject */-->
-    <!--function routeConfig($stateProvider, $urlRouterProvider) {-->
-        <!--$urlRouterProvider.otherwise('/dashboard');-->
-        <!--$stateProvider-->
-            <!--.state('dashboard', {-->
-                <!--url: '/dashboard',-->
-                <!--templateUrl: 'app/pages/dashboard/dashboard.html',-->
-                <!--title: 'Dashboard',-->
-<!--//                sidebarMeta: {-->
-<!--//                    icon: 'ion-android-home',-->
-<!--//                    order: 0,-->
-<!--//                },-->
-            <!--});-->
-    <!--}-->
-<!--</script>-->
-<script>
-//    function currentTime(){
-//        var a = new Date();
-//        var b = a.toLocaleTimeString();
-//        var c = a.toLocaleDateString();
-//        document.getElementById("currentTime").innerHTML = c+"&nbsp"+b;
-//    }
-//    setInterval(function() {currentTime()}, 1000);
-</script>
-<script src="lib/bmob.js"></script>
-<script type="text/javascript">
+<!--<div ui-view autoscroll="true" autoscroll-body-top></div>-->
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
 
-    //Bmob.initialize("Application ID", "REST API Key");
-    Bmob.initialize("a658a746e686eac3e7ceeff60e743908", "73d1a7fbb21be960c5a97df2701cb98d");
-
-//    var TestObject = Bmob.Object.extend("TestObject");
-//    var testObject = new TestObject();
-//    testObject.save({foo: "bar"}, {
-//        success: function(object) {
-//            $(".success").show();
-//        },
-//        error: function(model, error) {
-//            $(".error").show();
-//        }
-//    });
-
-//    var roleACL = new Bmob.ACL();
-//    roleACL.setPublicReadAccess(true);
-//    var role = new Bmob.Role("test", roleACL);
-//    role.save();
-
-    // By specifying no write privileges for the ACL, we can ensure the role cannot be altered.
-//    var roleACL = new Bmob.ACL();
-//    roleACL.setPublicReadAccess(true);
-//    var role = new Bmob.Role("Administrator", roleACL);
-//    role.save();
-
-//    var role = new Bmob.Role(roleName, roleACL);
-//    for (var i = 0; i < usersToAddToRole.length; i++) {
-//        role.getUsers().add(usersToAddToRole[i]);
-//    }
-//    for (var i = 0; i < rolesToAddToRole.length; i++) {
-//        role.getRoles().add(rolesToAddToRole[i]);
-//    }
-//    role.save();
-    /*
-     //获取一行数据
-     var GameScore = Bmob.Object.extend("GameScore");
-     var query = new Bmob.Query(GameScore);
-     query.get("4edc3f6ee9", {
-     success: function(object) {
-     // The object was retrieved successfully.
-     alert(object.get("score"));
-     },
-     error: function(object, error) {
-     alert("query object fail");
-     }
-     });
-     */
-
-    /*
-     //修改一行数据
-     var GameScore = Bmob.Object.extend("GameScore");
-     var query = new Bmob.Query(GameScore);
-     query.get("4edc3f6ee9", {
-     success: function(object) {
-     // The object was retrieved successfully.
-     object.set("score", 1338);
-     object.save(null, {
-     success: function(objectUpdate) {
-     alert("create object success, object score:"+objectUpdate.get("score"));
-     },
-     error: function(model, error) {
-     alert("create object fail");
-     }
-     });
-     },
-     error: function(object, error) {
-     alert("query object fail");
-     }
-     });
-     */
-
-    /*
-     //删除一行数据
-     var GameScore = Bmob.Object.extend("GameScore");
-     var query = new Bmob.Query(GameScore);
-     query.get("4edc3f6ee9", {
-     success: function(object) {
-     // The object was retrieved successfully.
-     object.destroy({
-     success: function(deleteObject) {
-     alert("delete success");
-     },
-     error: function(GameScoretest, error) {
-     alert("delete fail");
-     }
-     });
-     },
-     error: function(object, error) {
-     alert("query object fail");
-     }
-     });
-     */
-
-
-</script>
+    <script src="lib/angular-1.6.3/angular-ui-router.js"></script>
+    <script src="app/app.js"></script>
+    <script>
+//        angular.module('DailyReport', [
+//            'ui.router',
+//            'ui.bootstrap']);
+        //    function currentTime(){
+        //        var a = new Date();
+        //        var b = a.toLocaleTimeString();
+        //        var c = a.toLocaleDateString();
+        //        document.getElementById("currentTime").innerHTML = c+"&nbsp"+b;
+        //    }
+        //    setInterval(function() {currentTime()}, 1000);
+    </script>
+    <!--<script src="app/dashboard.module.js"></script>-->
+    <script src="app/dashboardCtrl.js"></script>
+    <script src="lib/bmob.js"></script>
+    <script type="text/javascript">
+        Bmob.initialize("a658a746e686eac3e7ceeff60e743908", "73d1a7fbb21be960c5a97df2701cb98d");
+    </script>
 
 </body>
 </html>
