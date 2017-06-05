@@ -13,11 +13,12 @@
         </div>
         <div class="panel-body">
             <div>
-                <button class="btn btn-default" ng-click="writereport()" style="left: 1%">
+                <button class="btn btn-default" ng-click="writeReport()" style="left: 1%">
                     填写日报
                 </button>
                 <p id="currentTime" style="position: absolute;display: inline;margin-top:10px;right: 2%;"></p>
             </div>
+            <!--<li ng-repeat="(key,value) in reportList">{{key}} | {{value}}</li>-->
             <table class="table table-striped">
                 <thead>
                 <tr>
@@ -29,40 +30,60 @@
                 </thead>
                 <tbody>
                 <tr>
-                    <td rowspan="3">Tanmay</td>
-                    <td>Tanmay</td>
-                    <td>Bangalore</td>
                     <td>1</td>
-                </tr>
-                <tr>
-                    <td>Sachin</td>
-                    <td>Mumbai</td>
-                    <td>1</td>
-                </tr>
-                <tr>
-                    <td>Uma</td>
-                    <td>Pune</td>
-                    <td>1</td>
-                </tr>
-
-                <tr>
-                    <td rowspan="3">CXP</td>
-                    <td>Tanmay</td>
-                    <td>Bangalore</td>
                     <td>2</td>
-                </tr>
-                <tr>
-                    <td>Sachin</td>
-                    <td>Mumbai</td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <td>Uma</td>
-                    <td>Pune</td>
-                    <td>2</td>
+                    <td>3</td>
+                    <td>4</td>
                 </tr>
                 </tbody>
+                <tbody ng-repeat="report in reportList">
+
+                    <tr ng-repeat="task in report.tasks track by $index">
+                        <td ng-if="$index == 0" rowspan={{report.tasks.length}}>{{report.user}}</td>
+                        <td>
+                            {{task.type}}
+                            <!--<span ng-bind="task.type"></span>-->
+                        </td>
+                        <td>
+                            {{task.content}}
+                            <!--<span ng-bind="task.content"></span>-->
+                        </td>
+                        <td>
+                            {{task.percent}}
+                            <!--<span ng-bind="task.percent"></span>-->
+                        </td>
+                        <!--<td>{{report.user}}</td>-->
+                        <!--<td>{{task.type}}</td>-->
+                        <!--<td>{{task.content}}</td>-->
+                        <!--<td>{{task.percent}}</td>-->
+                    </tr>
+                </tbody>
             </table>
+            <!--<table border="1">-->
+                <!--<tr ng-repeat="(x, y) in myObj">-->
+                    <!--<td>{{x}}</td>-->
+                    <!--<td>{{y}}</td>-->
+                <!--</tr>-->
+            <!--</table>-->
+            <!--<table class="table table-bordered">-->
+                <!--<thead>-->
+                <!--<tr>-->
+                    <!--<th>teacher</th>-->
+                    <!--<th>student</th>-->
+                    <!--<th>project</th>-->
+                <!--</tr>-->
+                <!--</thead>-->
+                <!--<tbody ng-repeat="teacher in test">-->
+                <!--<tr ng-repeat="student in teacher.student track by $index">-->
+                    <!--<td ng-if="$index ==0" rowspan={{teacher.student.length}}>{{teacher.teacher}}</td>-->
+                    <!--<td>-->
+                        <!--<span ng-bind="student.name"></span>-->
+                    <!--</td>-->
+                    <!--<td><span ng-bind="student.project"></span>-->
+                    <!--</td>-->
+                <!--</tr>-->
+                <!--</tbody>-->
+            <!--</table>-->
             <div style="position: absolute;right: 5%">
                 <span>选择日期</span>
                 <input type="date" value="2015-09-24"/>
@@ -77,32 +98,34 @@
     </div>
 
 <!--<div ui-view autoscroll="true" autoscroll-body-top></div>-->
-    <script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/angular-bootstrap/ui-bootstrap.js"></script>
-    <script src="bower_components/angular-route/angular-route.js"></script>
-    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-    <script src="bower_components/angular"></script>
-
-    <script src="lib/angular-ui-router.js"></script>
-    <script src="app/app.js"></script>
-    <script>
-//        angular.module('DailyReport', [
-//            'ui.router',
-//            'ui.bootstrap']);
-        //    function currentTime(){
-        //        var a = new Date();
-        //        var b = a.toLocaleTimeString();
-        //        var c = a.toLocaleDateString();
-        //        document.getElementById("currentTime").innerHTML = c+"&nbsp"+b;
-        //    }
-        //    setInterval(function() {currentTime()}, 1000);
-    </script>
-    <!--<script src="app/dashboard.module.js"></script>-->
-    <script src="app/dashboardCtrl.js"></script>
     <script src="lib/bmob.js"></script>
     <script type="text/javascript">
         Bmob.initialize("a658a746e686eac3e7ceeff60e743908", "73d1a7fbb21be960c5a97df2701cb98d");
     </script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <!--<script src="bower_components/angular"></script>-->
+
+    <script src="app/app.js"></script>
+    <script src="lib/angular-ui-router.js"></script>
+
+    <script>
+//        angular.module('DailyReport', [
+//            'ui.router',
+//            'ui.bootstrap']);
+            function currentTime(){
+                var a = new Date();
+                var b = a.toLocaleTimeString();
+                var c = a.toLocaleDateString();
+                document.getElementById("currentTime").innerHTML = c+"&nbsp"+b;
+            }
+            setInterval(function() {currentTime()}, 1000);
+    </script>
+    <!--<script src="app/dashboard.module.js"></script>-->
+    <script src="app/dashboardCtrl.js"></script>
+
 
 </body>
 </html>

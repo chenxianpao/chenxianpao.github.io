@@ -4,42 +4,44 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Reg DR</title>
+    <title>注册</title>
 </head>
 <body>
     <div class="auth-block">
-        <h1>Sign up to DR</h1>
-        <a href="auth.html" class="auth-link">Already have a DR account? Sign in!</a>
 
-        <form class="form-horizontal">
+        <form class="form-horizontal" style="margin-top: 50px;">
             <div class="form-group">
-                <label for="inputName3" class="col-sm-2 control-label">Name</label>
-
-                <div class="col-sm-10">
+                <label for="inputName3" class="col-sm-5 control-label">用户名</label>
+                <div class="col-sm-2">
                     <input type="text" class="form-control" id="inputName3" placeholder="Full Name">
                 </div>
             </div>
             <div class="form-group">
-                <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+                <label for="inputEmail3" class="col-sm-5 control-label">邮箱</label>
 
-                <div class="col-sm-10">
+                <div class="col-sm-2">
                     <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
                 </div>
             </div>
             <div class="form-group">
-                <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+                <label for="inputPassword3" class="col-sm-5 control-label">密码</label>
 
-                <div class="col-sm-10">
+                <div class="col-sm-2">
                     <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
                 </div>
             </div>
             <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-10">
-                    <button type="submit" class="btn btn-default btn-auth">Sign up</button>
+                <div class="col-sm-offset-5 col-sm-1">
+                    <button type="submit" class="btn btn-default btn-auth">注册</button>
+                </div>
+                <div style="margin-top: 7px;">
+                    <a href="auth.html" class="auth-link">已有账号？登录！</a>
                 </div>
             </div>
         </form>
         <!--<div class="auth-sep"><span><span>or Sign up with one click</span></span></div>-->
     </div>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+
 </body>
 </html>

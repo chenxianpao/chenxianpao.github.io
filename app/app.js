@@ -3,6 +3,4 @@
  */
 'use strict';
 
-angular.module('DailyReport', [
-    'ui.router',
-    'ui.bootstrap']);
+angular.module('DailyReport', ['ui.bootstrap']);
