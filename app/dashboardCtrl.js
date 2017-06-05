@@ -10,8 +10,8 @@
     /** @ngInject */
     function dashboardCtrl($scope, $uibModal) {
         //alert("aaa");
-        var DR = Bmob.Object.extend("DR");
-        var query = new Bmob.Query(DR);
+        var DailyReport = Bmob.Object.extend("DailyReport");
+        var query = new Bmob.Query(DailyReport);
         //$scope.reportList = [];
         // $scope.test = [
         //     {"teacher":"Tom","student":[{"name":"stuA","project":"projectA"},
@@ -132,8 +132,8 @@
 
         $scope.write = function () {
             console.log($scope.taskprocess, $scope.taskcontent, $scope.tasktype);
-            var DR = Bmob.Object.extend("DR");
-            var dailyReport = new DR();
+            var DailyReport = Bmob.Object.extend("DailyReport");
+            var dailyReport = new DailyReport();
             dailyReport.set("user", "ccc");
             dailyReport.set("tasktype", $scope.tasktype);
             dailyReport.set("content", $scope.taskcontent);
